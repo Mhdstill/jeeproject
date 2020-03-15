@@ -1,6 +1,8 @@
 package fr.pantheonsorbonne.ufr27.miage.dao;
 
 import javax.annotation.ManagedBean;
+
+import java.sql.Date;
 import java.util.List;
 import fr.pantheonsorbonne.ufr27.miage.model.jaxb.AvailabilityNeutralResponse;
 
@@ -20,7 +22,7 @@ public class ANResponsesDAO {
 	@Inject
 	EntityManager em;
 
-	public List<AvailabilityNeutralResponse> getAN(date dateDepart, IATA iata, date heureDepart) throws NoSuchUserException {
+	public List<AvailabilityNeutralResponse> getAN(Date dateDepart, String  iata, Date heureDepart) throws NoSuchUserException {
 
 		List<AvailabilityNeutralResponse> customer = em.createQuery("select a from AvailabilityNeutralResponse a "
                 + "where dateDepart = :dateDepart "

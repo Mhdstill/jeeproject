@@ -20,6 +20,8 @@ import fr.pantheonsorbonne.ufr27.miage.jms.payment.PaymentProcessorBean;
 import fr.pantheonsorbonne.ufr27.miage.model.jaxb.Address;
 import fr.pantheonsorbonne.ufr27.miage.model.jaxb.User;
 import fr.pantheonsorbonne.ufr27.miage.model.jaxb.AvailabilityNeutralResponse;
+
+import java.sql.Date;
 import java.util.List;
 
 @Path("/AN")
@@ -30,7 +32,7 @@ public class ANEndpoint {
 
 	@GET
 	@Path("/{dateDepart}{iata}{heureDepart}")
-	public  List<AvailabilityNeutralResponse> getAN(@PathParam("dateDepart") Date dateDepart, @PathParam("IATA") IATA iata, @PathParam("heureDepart") datetime heureDepart) {
+	public  List<AvailabilityNeutralResponse> getAN(@PathParam("dateDepart") Date dateDepart, @PathParam("IATA") String iata, @PathParam("heureDepart") Date heureDepart) {
 		try {
 			return dao.getAN(dateDepart,  iata, heureDepart);
 		} catch (NoSuchUserException e) {
